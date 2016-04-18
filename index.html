@@ -73,41 +73,51 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-pi_install_node" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-pi-install-node" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/04/18/pi_install_node/" class="article-date">
-  <time datetime="2016-04-18T02:53:11.771Z" itemprop="datePublished">2016-04-18</time>
+    <a href="/2016/04/18/pi-install-node/" class="article-date">
+  <time datetime="2016-04-18T03:02:58.000Z" itemprop="datePublished">2016-04-18</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/树莓派/">树莓派</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/18/pi-install-node/">pi_install_node</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: 树莓派安装nodejs和hexo<br>date: 2016-04-18 01:49:08<br>tags: </p>
-<ul>
-<li>树莓派</li>
-<li>nodejs</li>
-<li>hexo<br>categories: </li>
-<li>树莓派</li>
-</ul>
-<p>注意，要使用arm版本的软件包</p>
+        <p>注意，要使用arm版本的软件包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://nodejs.org/dist/v4.1.2/node-v4.1.2-linux-armv7l.tar.gz .</span><br><span class="line">$ tar xvzf node-v4.1.2-linux-armv7l.tar.gz</span><br><span class="line">$ mv node-v4.1.2-linux-armv7l /usr/<span class="built_in">local</span>/node</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">"PATH=<span class="variable">$&#123;PATH&#125;</span>:/usr/local/node/bin"</span> &gt;&gt; ~/.zshrc</span><br><span class="line">$ <span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>查看版本号：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">v4.1.2</span><br><span class="line">$ npm -v</span><br><span class="line">2.14.4</span><br><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://pigstone.github.io/2016/04/18/pi_install_node/" data-id="cin5esjll0008qr73xqvg8r2g" class="article-share-link" data-share="baidu" data-title="">分享到</a>
+        <a data-url="http://pigstone.github.io/2016/04/18/pi-install-node/" data-id="cin5f5xev0008f573xbudagaw" class="article-share-link" data-share="baidu" data-title="pi_install_node">分享到</a>
       
 
       
-        <a href="http://pigstone.github.io/2016/04/18/pi_install_node/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://pigstone.github.io/2016/04/18/pi-install-node/#ds-thread" class="article-comment-link">评论</a>
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+
     </footer>
   </div>
   
@@ -115,39 +125,52 @@
 
 
   
-    <article id="post-linux_mount_samba" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-linux-mount-samba" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/04/18/linux_mount_samba/" class="article-date">
-  <time datetime="2016-04-18T02:53:03.621Z" itemprop="datePublished">2016-04-18</time>
+    <a href="/2016/04/18/linux-mount-samba/" class="article-date">
+  <time datetime="2016-04-18T03:02:37.000Z" itemprop="datePublished">2016-04-18</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/树莓派/">树莓派</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/18/linux-mount-samba/">linux_mount_samba</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: 树莓派挂载samba<br>date: 2016-04-18 01:49:08<br>tags: </p>
-<ul>
-<li>树莓派</li>
-<li>samba<br>categories: </li>
-<li>树莓派</li>
-</ul>
-<p>samba服务是小米路由器插件驱动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir /mnt/samba</span><br><span class="line">$ mount -t cifs //192.168.31.1/共享 /mnt/samba <span class="comment">#挂载到指定目录</span></span><br><span class="line">$ umount /mnt/samba <span class="comment">#卸载</span></span><br></pre></td></tr></table></figure>
+        <p>samba服务由小米路由器插件驱动</p>
+<p><code>`` bash
+$ mkdir /mnt/samba
+$ mount -t cifs //192.168.31.1/共享 /mnt/samba #挂载到指定目录
+$ umount /mnt/samba #卸载</code></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://pigstone.github.io/2016/04/18/linux_mount_samba/" data-id="cin5esjkd0005qr73066o1p8a" class="article-share-link" data-share="baidu" data-title="">分享到</a>
+        <a data-url="http://pigstone.github.io/2016/04/18/linux-mount-samba/" data-id="cin5f5xdp0005f573mqtkhhea" class="article-share-link" data-share="baidu" data-title="linux_mount_samba">分享到</a>
       
 
       
-        <a href="http://pigstone.github.io/2016/04/18/linux_mount_samba/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://pigstone.github.io/2016/04/18/linux-mount-samba/#ds-thread" class="article-comment-link">评论</a>
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/samba/">samba</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+
     </footer>
   </div>
   
@@ -186,7 +209,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://pigstone.github.io/2015/12/18/uwsgi部署flask/" data-id="cin5esjnb000aqr736nlni5b0" class="article-share-link" data-share="baidu" data-title="uwsgi部署flask">分享到</a>
+        <a data-url="http://pigstone.github.io/2015/12/18/uwsgi部署flask/" data-id="cin5f5xgc000af5732o08kv5w" class="article-share-link" data-share="baidu" data-title="uwsgi部署flask">分享到</a>
       
 
       
@@ -238,7 +261,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://pigstone.github.io/2015/12/13/汉字转拼音python库pypinyin/" data-id="cin5esjqz000kqr73ztz8bcp2" class="article-share-link" data-share="baidu" data-title="汉字转拼音python库pypinyin">分享到</a>
+        <a data-url="http://pigstone.github.io/2015/12/13/汉字转拼音python库pypinyin/" data-id="cin5f5xjs000kf573k1pshpj4" class="article-share-link" data-share="baidu" data-title="汉字转拼音python库pypinyin">分享到</a>
       
 
       
@@ -298,7 +321,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://pigstone.github.io/2015/12/12/云主机linux开发环境配置/" data-id="cin5esjov000cqr73xm2agz53" class="article-share-link" data-share="baidu" data-title="云主机linux开发环境配置">分享到</a>
+        <a data-url="http://pigstone.github.io/2015/12/12/云主机linux开发环境配置/" data-id="cin5f5xht000df573pf9ld3v6" class="article-share-link" data-share="baidu" data-title="云主机linux开发环境配置">分享到</a>
       
 
       
@@ -351,7 +374,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://pigstone.github.io/2015/12/11/极简中国历史框架/" data-id="cin5esjqa000iqr730jzv6fbd" class="article-share-link" data-share="baidu" data-title="极简中国历史框架">分享到</a>
+        <a data-url="http://pigstone.github.io/2015/12/11/极简中国历史框架/" data-id="cin5f5xj7000if573rfbxqj5w" class="article-share-link" data-share="baidu" data-title="极简中国历史框架">分享到</a>
       
 
       
@@ -402,7 +425,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://pigstone.github.io/2015/12/10/github部署hexo遇到的坑/" data-id="cin5esjia0002qr73pv5ad3if" class="article-share-link" data-share="baidu" data-title="github部署hexo遇到的坑">分享到</a>
+        <a data-url="http://pigstone.github.io/2015/12/10/github部署hexo遇到的坑/" data-id="cin5f5xb60002f5734iicmoao" class="article-share-link" data-share="baidu" data-title="github部署hexo遇到的坑">分享到</a>
       
 
       
@@ -455,7 +478,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://pigstone.github.io/2015/08/08/如果这是宋史1/" data-id="cin5esjpq000gqr73dllyhj0l" class="article-share-link" data-share="baidu" data-title="如果这是宋史1">分享到</a>
+        <a data-url="http://pigstone.github.io/2015/08/08/如果这是宋史1/" data-id="cin5f5xik000gf5731gvhga7u" class="article-share-link" data-share="baidu" data-title="如果这是宋史1">分享到</a>
       
 
       
@@ -508,7 +531,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://pigstone.github.io/2015/07/26/52个改变/" data-id="cin5esjg50000qr73jne0f9gs" class="article-share-link" data-share="baidu" data-title="52个改变">分享到</a>
+        <a data-url="http://pigstone.github.io/2015/07/26/52个改变/" data-id="cin5f5x910000f573j0wzh0tv" class="article-share-link" data-share="baidu" data-title="52个改变">分享到</a>
       
 
       
@@ -532,7 +555,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/flask/">flask</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/python/">python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/flask/">flask</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/python/">python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树莓派/">树莓派</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -541,7 +564,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/pypinyin/" style="font-size: 10px;">pypinyin</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/uwsgi/" style="font-size: 10px;">uwsgi</a> <a href="/tags/云主机/" style="font-size: 10px;">云主机</a> <a href="/tags/历史/" style="font-size: 20px;">历史</a>
+      <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/pypinyin/" style="font-size: 10px;">pypinyin</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/samba/" style="font-size: 10px;">samba</a> <a href="/tags/uwsgi/" style="font-size: 10px;">uwsgi</a> <a href="/tags/云主机/" style="font-size: 10px;">云主机</a> <a href="/tags/历史/" style="font-size: 20px;">历史</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a>
     </div>
   </div>
 
@@ -563,11 +586,11 @@
       <ul>
         
           <li>
-            <a href="/2016/04/18/pi_install_node/">(no title)</a>
+            <a href="/2016/04/18/pi-install-node/">pi_install_node</a>
           </li>
         
           <li>
-            <a href="/2016/04/18/linux_mount_samba/">(no title)</a>
+            <a href="/2016/04/18/linux-mount-samba/">linux_mount_samba</a>
           </li>
         
           <li>
