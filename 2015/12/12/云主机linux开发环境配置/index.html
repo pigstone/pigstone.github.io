@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>云主机linux开发环境配置 | pigstone的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="挂载数据盘
+vim&amp;amp;screen
+python环境
+安装nginx
+安装mongodb
+远程桌面登陆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云主机linux开发环境配置">
+<meta property="og:url" content="http://pigstone.github.io/2015/12/12/云主机linux开发环境配置/index.html">
+<meta property="og:site_name" content="pigstone的博客">
+<meta property="og:description" content="挂载数据盘
+vim&amp;amp;screen
+python环境
+安装nginx
+安装mongodb
+远程桌面登陆">
+<meta property="og:updated_time" content="2016-04-18T00:22:52.195Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="云主机linux开发环境配置">
+<meta name="twitter:description" content="挂载数据盘
+vim&amp;amp;screen
+python环境
+安装nginx
+安装mongodb
+远程桌面登陆">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">pigstone的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">勇敢发出你的声音</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/wiki">wiki</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="pigstone.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-云主机linux开发环境配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/12/云主机linux开发环境配置/" class="article-date">
+  <time datetime="2015-12-11T17:54:45.000Z" itemprop="datePublished">2015-12-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>►<a class="article-category-link" href="/categories/技术/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      云主机linux开发环境配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>挂载数据盘</li>
+<li>vim&amp;screen</li>
+<li>python环境</li>
+<li>安装nginx</li>
+<li>安装mongodb</li>
+<li>远程桌面登陆</li>
+</ol>
+<a id="more"></a>
+<h2 id="一、挂载数据盘"><a href="#一、挂载数据盘" class="headerlink" title="一、挂载数据盘"></a>一、挂载数据盘</h2><p>云主机的系统盘和数据盘通常是分开的，而且数据盘初始默认是不挂载的，故需此步骤。</p>
+<h3 id="1-1-查看磁盘设备情况"><a href="#1-1-查看磁盘设备情况" class="headerlink" title="1.1 查看磁盘设备情况"></a>1.1 查看磁盘设备情况</h3><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[<span class="name">root@VM_216_14_centos</span> ~]# fdisk -l</span><br><span class="line"></span><br><span class="line">磁盘 /dev/vda：8589 MB, <span class="number">8589934592</span> 字节，16777216 个扇区</span><br><span class="line">Units = 扇区 of <span class="number">1</span> * <span class="number">512</span> = <span class="number">512</span> bytes</span><br><span class="line">扇区大小(<span class="name">逻辑/物理</span>)：512 字节 / <span class="number">512</span> 字节</span><br><span class="line">I/O 大小(<span class="name">最小/最佳</span>)：512 字节 / <span class="number">512</span> 字节</span><br><span class="line">磁盘标签类型：dos</span><br><span class="line">磁盘标识符：0x000c6178</span><br><span class="line"></span><br><span class="line">   设备 Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/vda1   *        <span class="number">2048</span>    <span class="number">16777215</span>     <span class="number">8387584</span>   <span class="number">83</span>  Linux</span><br><span class="line"></span><br><span class="line">磁盘 /dev/vdb：53.7 GB, <span class="number">53687091200</span> 字节，13107200 个扇区</span><br><span class="line">Units = 扇区 of <span class="number">1</span> * <span class="number">4096</span> = <span class="number">4096</span> bytes</span><br><span class="line">扇区大小(<span class="name">逻辑/物理</span>)：4096 字节 / <span class="number">4096</span> 字节</span><br><span class="line">I/O 大小(<span class="name">最小/最佳</span>)：4096 字节 / <span class="number">4096</span> 字节</span><br><span class="line">磁盘标签类型：dos</span><br><span class="line">磁盘标识符：0xf702a5b7</span><br><span class="line"></span><br><span class="line">   设备 Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/vdb1             <span class="number">256</span>    <span class="number">13107199</span>    <span class="number">52427776</span>   <span class="number">83</span>  Linux</span><br><span class="line"></span><br><span class="line">磁盘 /dev/vdc：2147 MB, <span class="number">2147483648</span> 字节，4194304 个扇区</span><br><span class="line">Units = 扇区 of <span class="number">1</span> * <span class="number">512</span> = <span class="number">512</span> bytes</span><br><span class="line">扇区大小(<span class="name">逻辑/物理</span>)：512 字节 / <span class="number">512</span> 字节</span><br><span class="line">I/O 大小(<span class="name">最小/最佳</span>)：512 字节 / <span class="number">512</span> 字节</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-查看挂载情况"><a href="#1-2-查看挂载情况" class="headerlink" title="1.2 查看挂载情况"></a>1.2 查看挂载情况</h3><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="symbol">VM_216_14_centos</span> ~]# df -h</span><br><span class="line">文件系统        容量  已用  可用 已用<span class="comment">% 挂载点</span></span><br><span class="line">/dev/vda1       <span class="number">7.8</span><span class="symbol">G</span>  <span class="number">1.2</span><span class="symbol">G</span>  <span class="number">6.3</span><span class="symbol">G</span>   <span class="number">16</span><span class="comment">% /</span></span><br><span class="line">devtmpfs        <span class="number">912</span><span class="symbol">M</span>     <span class="number">0</span>  <span class="number">912</span><span class="symbol">M</span>    <span class="number">0</span><span class="comment">% /dev</span></span><br><span class="line">tmpfs           <span class="number">921</span><span class="symbol">M</span>   <span class="number">24</span><span class="symbol">K</span>  <span class="number">921</span><span class="symbol">M</span>    <span class="number">1</span><span class="comment">% /dev/shm</span></span><br><span class="line">tmpfs           <span class="number">921</span><span class="symbol">M</span>  <span class="number">8.4</span><span class="symbol">M</span>  <span class="number">912</span><span class="symbol">M</span>    <span class="number">1</span><span class="comment">% /run</span></span><br><span class="line">tmpfs           <span class="number">921</span><span class="symbol">M</span>     <span class="number">0</span>  <span class="number">921</span><span class="symbol">M</span>    <span class="number">0</span><span class="comment">% /sys/fs/cgroup</span></span><br><span class="line">/dev/vdb1        <span class="number">50</span><span class="symbol">G</span>   <span class="number">52</span><span class="symbol">M</span>   <span class="number">47</span><span class="symbol">G</span>    <span class="number">1</span><span class="comment">% /disk</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-3-分区与格式化"><a href="#1-3-分区与格式化" class="headerlink" title="1.3 分区与格式化"></a>1.3 分区与格式化</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@VM_216_14_centos</span> ~]<span class="meta"># fdisk /dev/vdb</span></span><br></pre></td></tr></table></figure>
+<p>按照界面的提示，依次输入“n”(新建分区)、“p”(新建扩展分区)、“1”(使用第1个主分区)，两次回车(使用默认配置)，输入“w”(保存分区表)，开始分区。<br>这时候已经分好区了，/dev目录下会有文件/dev/vdb1存在。此时新的分区还没有文件系统，执行<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root<span class="symbol">@VM_216_14_centos</span> ~]<span class="meta"># mkfs.ext3 /dev/vdb1</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1-4-挂载"><a href="#1-4-挂载" class="headerlink" title="1.4 挂载"></a>1.4 挂载</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@VM_216_14_centos</span> ~]<span class="meta"># mkdir /disk</span></span><br><span class="line">[root<span class="symbol">@VM_216_14_centos</span> ~]<span class="meta"># mount /dev/vdb1 /disk/</span></span><br></pre></td></tr></table></figure>
+<p>系统启动时自动挂载数据盘<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@VM_216_14_centos</span> ~]<span class="meta"># echo <span class="string">'/dev/vdb1 /disk ext3 defaults 0 0'</span> &gt;&gt; /etc/fstab</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="二、vim-amp-screen"><a href="#二、vim-amp-screen" class="headerlink" title="二、vim&amp;screen"></a>二、vim&amp;screen</h2><h3 id="2-1-安装配置"><a href="#2-1-安装配置" class="headerlink" title="2.1 安装配置"></a>2.1 安装配置</h3><p>参考：<a href="https://git.oschina.net/mrec/linux_env" target="_blank" rel="external">https://git.oschina.net/mrec/linux_env</a></p>
+<h3 id="2-2-screen使用"><a href="#2-2-screen使用" class="headerlink" title="2.2 screen使用"></a>2.2 screen使用</h3><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">screen</span> -S dy    <span class="meta">#新建</span></span><br><span class="line">ctrl+a d        <span class="meta">#退出</span></span><br><span class="line"><span class="keyword">screen</span> -dr dy   <span class="meta">#恢复</span></span><br><span class="line">ctrl+a n        <span class="meta">#新建窗口</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、python环境"><a href="#三、python环境" class="headerlink" title="三、python环境"></a>三、python环境</h2><p>centos自带python2.7版本，python本身无需安装</p>
+<h3 id="3-1-安装pip"><a href="#3-1-安装pip" class="headerlink" title="3.1 安装pip"></a>3.1 安装pip</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http<span class="variable">s:</span>//bootstrap.pypa.io/<span class="built_in">get</span>-pip.<span class="keyword">py</span></span><br><span class="line"><span class="keyword">python</span> <span class="built_in">get</span>-pip.<span class="keyword">py</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2-virtualenv"><a href="#3-2-virtualenv" class="headerlink" title="3.2 virtualenv"></a>3.2 virtualenv</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> python-virtualenv</span><br></pre></td></tr></table></figure>
+<p>创建一个干净的python环境<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">virtualenv --<span class="keyword">no</span>-site-packages flask</span><br><span class="line"><span class="keyword">cd</span> flask</span><br><span class="line"><span class="keyword">source</span> ./bin/acitvate #启用<span class="keyword">python</span>环境</span><br><span class="line">acitvate    #启用<span class="keyword">python</span>环境</span><br><span class="line">deactivate  #停用<span class="keyword">python</span>环境</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-3-安装常用的库"><a href="#3-3-安装常用的库" class="headerlink" title="3.3 安装常用的库"></a>3.3 安装常用的库</h3><p>此处因人而异<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install </span>flask</span><br><span class="line">pip <span class="keyword">install </span>pymongo</span><br><span class="line"></span><br><span class="line">pip <span class="keyword">install </span>whoosh</span><br><span class="line">pip <span class="keyword">install </span><span class="keyword">jieba</span><br><span class="line"></span>pip <span class="keyword">install </span>pypinyin</span><br><span class="line"></span><br><span class="line">pip <span class="keyword">install </span>requests</span><br><span class="line">pip <span class="keyword">install </span><span class="keyword">beautifulsoup4</span><br><span class="line"></span>pip <span class="keyword">install </span>pyquery <span class="comment"># yum install libxslt-devel libxml2-devell libffi-devel openssl-devel</span></span><br></pre></td></tr></table></figure></p>
+<p>使用douban的pip源安装python包<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install scrapy -<span class="selector-tag">i</span> http:<span class="comment">//pypi.douban.com/simple/</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="四、安装nginx"><a href="#四、安装nginx" class="headerlink" title="四、安装nginx"></a>四、安装nginx</h2><h3 id="4-1-切换yum源"><a href="#4-1-切换yum源" class="headerlink" title="4.1 切换yum源"></a>4.1 切换yum源</h3><p>切换到<a href="http://mirrors.163.com/的centos7源,切换方法参考：" target="_blank" rel="external">http://mirrors.163.com/的centos7源,切换方法参考：</a> <a href="http://mirrors.163.com/.help/centos.html" target="_blank" rel="external">http://mirrors.163.com/.help/centos.html</a></p>
+<h3 id="4-2-安装"><a href="#4-2-安装" class="headerlink" title="4.2 安装"></a>4.2 安装</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> nginx</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-服务"><a href="#4-3-服务" class="headerlink" title="4.3 服务"></a>4.3 服务</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> nginx   <span class="comment">#启动</span></span><br><span class="line">systemctl <span class="literal">stop</span> nginx    <span class="comment">#停止</span></span><br><span class="line">systemctl restart nginx <span class="comment">#重启</span></span><br></pre></td></tr></table></figure>
+<h2 id="五、安装mongodb"><a href="#五、安装mongodb" class="headerlink" title="五、安装mongodb"></a>五、安装mongodb</h2><h3 id="5-1-下载"><a href="#5-1-下载" class="headerlink" title="5.1 下载"></a>5.1 下载</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget <span class="string">https:</span><span class="comment">//fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.2.0.tgz</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-2-使用"><a href="#5-2-使用" class="headerlink" title="5.2 使用"></a>5.2 使用</h3><p>启动服务<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="keyword">bin/mongod </span>-f ./mongod.conf</span><br></pre></td></tr></table></figure></p>
+<p>配置文件mongod.conf<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">port</span>=<span class="number">12345</span></span><br><span class="line"><span class="attr">dbpath</span>=/disk/mongo/data/db</span><br><span class="line"><span class="attr">logpath</span>=/disk/mongo/data/log/mongo.log</span><br><span class="line"><span class="attr">logappend</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">fork</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>启动客户端<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/mongo <span class="number">127.0.0.1:12345</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="5-3-备份-amp-恢复"><a href="#5-3-备份-amp-恢复" class="headerlink" title="5.3 备份&amp;恢复"></a>5.3 备份&amp;恢复</h3><p>备份<br><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump -<span class="keyword">h</span> <span class="number">127.0</span>.0.1:<span class="number">12345</span> -<span class="keyword">d</span> movie -o /home/dy/mongo_bak/</span><br></pre></td></tr></table></figure></p>
+<p>会在目录/home/dy/mongo_bak/下生成movie目录</p>
+<p>恢复<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongorestore -<span class="keyword">h</span> 127.0.0.1:12345 -<span class="keyword">d</span> movie --<span class="keyword">drop</span> /disk/mongo_bak/movie</span><br></pre></td></tr></table></figure></p>
+<h2 id="六、远程桌面登陆"><a href="#六、远程桌面登陆" class="headerlink" title="六、远程桌面登陆"></a>六、远程桌面登陆</h2><h3 id="6-1-安装vnc-server"><a href="#6-1-安装vnc-server" class="headerlink" title="6.1 安装vnc-server"></a>6.1 安装vnc-server</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> tigervnc tigervnc-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
+<p>vps一般都没有桌面环境，需安装，此处不同版本centos差别较大，centos7：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> groupinstall <span class="string">'GNOME Desktop'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="6-1-启动server"><a href="#6-1-启动server" class="headerlink" title="6.1 启动server"></a>6.1 启动server</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vncserver</span> <span class="comment">##配置密码</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-2-连接"><a href="#6-2-连接" class="headerlink" title="6.2 连接"></a>6.2 连接</h3><p>在客户端机器上启动<a href="http://www.realvnc.com/download/binary/1775/" target="_blank" rel="external">vnc viewer</a><br>地址栏输入:”xxx.xxx.xxx.xxx:1” 连接</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://pigstone.github.io/2015/12/12/云主机linux开发环境配置/" data-id="cin59ec2c0008ys733vsxu9d7" class="article-share-link" data-share="baidu" data-title="云主机linux开发环境配置">分享到</a>
+      
+
+      
+        <a href="http://pigstone.github.io/2015/12/12/云主机linux开发环境配置/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/13/汉字转拼音python库pypinyin/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          汉字转拼音python库pypinyin
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/11/极简中国历史框架/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">极简中国历史框架</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/12/12/云主机linux开发环境配置/" data-title="云主机linux开发环境配置" data-url="http://pigstone.github.io/2015/12/12/云主机linux开发环境配置/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c1/">c1</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/c1/c2/">c2</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/flask/">flask</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/无分类/">无分类</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/pypinyin/" style="font-size: 10px;">pypinyin</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/t1/" style="font-size: 10px;">t1</a> <a href="/tags/t2/" style="font-size: 10px;">t2</a> <a href="/tags/uwsgi/" style="font-size: 10px;">uwsgi</a> <a href="/tags/历史/" style="font-size: 20px;">历史</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">2016年 04月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">2015年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">2015年 07月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/04/15/linux_mount_samba/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/15/pi_install_node/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/17/网站推广/">网站推广</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/18/uwsgi部署flask/">uwsgi部署flask</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/13/汉字转拼音python库pypinyin/">汉字转拼音python库pypinyin</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 pigstone<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/wiki" class="mobile-nav-link">wiki</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pigstone"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
